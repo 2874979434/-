@@ -1,0 +1,68 @@
+<view class="container">
+  <view class="header">
+    <image class="logo" src="/images/logo.png" mode="aspectFit"></image>
+    <text class="title">学生请假管理系统</text>
+  </view>
+
+  <view class="form-container">
+    <view class="type-switch" bindtap="switchType">
+      <view class="type-option {{type === 'student' ? 'active' : ''}}" data-type="student">
+        <image class="type-icon" src="/images/student.png" mode="aspectFit"></image>
+        <text>学生</text>
+      </view>
+      <view class="type-option {{type === 'teacher' ? 'active' : ''}}" data-type="teacher">
+        <image class="type-icon" src="/images/teacher.png" mode="aspectFit"></image>
+        <text>教师</text>
+      </view>
+    </view>
+
+    <view class="form-item">
+      <view class="input-wrapper">
+        <image class="input-icon" src="/images/user.png" mode="aspectFit"></image>
+        <input 
+          class="input" 
+          type="text" 
+          placeholder="{{type === 'student' ? '请输入学号' : '请输入工号'}}"
+          value="{{id}}" 
+          bindinput="inputId" 
+        />
+      </view>
+    </view>
+
+    <view class="form-item">
+      <view class="input-wrapper">
+        <image class="input-icon" src="/images/password.png" mode="aspectFit"></image>
+        <input 
+          class="input" 
+          type="password" 
+          placeholder="请输入密码" 
+          value="{{password}}" 
+          bindinput="inputPassword"
+          password="true"
+        />
+      </view>
+    </view>
+
+    <view class="form-item">
+      <button class="login-btn" type="primary" bindtap="handleLogin">登录</button>
+    </view>
+
+    <view class="divider">
+      <view class="line"></view>
+      <text class="divider-text">测试账号</text>
+      <view class="line"></view>
+    </view>
+
+    <view class="form-item">
+      <button 
+        class="init-btn" 
+        type="default" 
+        loading="{{isInitializing}}" 
+        bindtap="initDatabase"
+        disabled="{{isInitializing}}"
+      >
+        {{isInitializing ? '初始化中...' : '初始化测试数据'}}
+      </button>
+    </view>
+  </view>
+</view> 

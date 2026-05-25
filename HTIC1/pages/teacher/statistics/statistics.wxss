@@ -1,0 +1,116 @@
+.container {
+  padding: 30rpx;
+  background-color: #f5f6fa;
+  min-height: 100vh;
+}
+
+.header {
+  margin-bottom: 30rpx;
+}
+
+.title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.stats-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20rpx;
+  margin-bottom: 30rpx;
+}
+
+.stat-card {
+  background-color: #fff;
+  padding: 30rpx;
+  border-radius: 12rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
+}
+
+.stat-value {
+  font-size: 48rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10rpx;
+}
+
+.stat-label {
+  font-size: 24rpx;
+  color: #666;
+}
+
+.stat-card.pending .stat-value {
+  color: #faad14;
+}
+
+.stat-card.approved .stat-value {
+  color: #52c41a;
+}
+
+.stat-card.rejected .stat-value {
+  color: #ff4d4f;
+}
+
+.section {
+  background-color: #fff;
+  border-radius: 12rpx;
+  padding: 30rpx;
+  margin-bottom: 30rpx;
+}
+
+.section-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20rpx;
+  display: block;
+}
+
+.stats-table {
+  width: 100%;
+  border: 1px solid #e8e8e8;
+  border-radius: 8rpx;
+}
+
+.table-header {
+  display: grid;
+  grid-template-columns: 2fr repeat(4, 1fr);
+  background-color: #fafafa;
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.header-cell {
+  padding: 20rpx;
+  font-size: 24rpx;
+  color: #666;
+  text-align: center;
+  font-weight: bold;
+}
+
+.table-row {
+  display: grid;
+  grid-template-columns: 2fr repeat(4, 1fr);
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.table-row:last-child {
+  border-bottom: none;
+}
+
+.table-cell {
+  padding: 20rpx;
+  font-size: 24rpx;
+  color: #333;
+  text-align: center;
+}
+
+.empty-state {
+  padding: 60rpx;
+  text-align: center;
+  color: #999;
+  font-size: 28rpx;
+} 

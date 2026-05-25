@@ -1,0 +1,143 @@
+.container {
+  padding: 30rpx;
+  min-height: 100vh;
+  background-color: #f5f6fa;
+}
+
+.header {
+  margin-bottom: 40rpx;
+}
+
+.title {
+  display: block;
+  font-size: 40rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10rpx;
+}
+
+.subtitle {
+  display: block;
+  font-size: 28rpx;
+  color: #666;
+}
+
+.warning {
+  background-color: #fff2f0;
+  border: 2rpx solid #ffccc7;
+  border-radius: 8rpx;
+  padding: 20rpx;
+  margin-bottom: 40rpx;
+}
+
+.warning-title {
+  display: block;
+  color: #ff4d4f;
+  font-size: 32rpx;
+  font-weight: bold;
+  margin-bottom: 10rpx;
+}
+
+.warning-text {
+  display: block;
+  color: #ff7875;
+  font-size: 28rpx;
+  line-height: 1.5;
+}
+
+.init-btn {
+  background-color: #1890ff;
+  color: #fff;
+  border: none;
+  border-radius: 8rpx;
+  margin-bottom: 40rpx;
+}
+
+.init-btn.loading {
+  background-color: #91d5ff;
+}
+
+.init-btn::after {
+  border: none;
+}
+
+.log-container {
+  background-color: #fff;
+  border-radius: 8rpx;
+  padding: 20rpx;
+  margin-bottom: 40rpx;
+}
+
+.log-title {
+  display: block;
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20rpx;
+}
+
+.log-content {
+  height: 300rpx;
+  border: 2rpx solid #e8e8e8;
+  border-radius: 4rpx;
+  padding: 20rpx;
+}
+
+.log-item {
+  font-size: 28rpx;
+  color: #666;
+  line-height: 1.5;
+  margin-bottom: 10rpx;
+}
+
+.empty-log {
+  text-align: center;
+  color: #999;
+  font-size: 28rpx;
+  padding: 40rpx 0;
+}
+
+.info-container {
+  background-color: #fff;
+  border-radius: 8rpx;
+  padding: 20rpx;
+}
+
+.info-title {
+  display: block;
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20rpx;
+}
+
+.info-section {
+  margin-bottom: 30rpx;
+}
+
+.info-section:last-child {
+  margin-bottom: 0;
+}
+
+.section-title {
+  display: block;
+  font-size: 28rpx;
+  color: #666;
+  margin-bottom: 10rpx;
+}
+
+.account-item {
+  background-color: #f5f5f5;
+  padding: 16rpx;
+  border-radius: 4rpx;
+  margin-bottom: 10rpx;
+}
+
+.account-item:last-child {
+  margin-bottom: 0;
+}
+
+.account-item text {
+  font-size: 28rpx;
+  color: #333;
+} 

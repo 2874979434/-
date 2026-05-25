@@ -1,0 +1,74 @@
+<view class="container">
+  <view class="header">
+    <view class="user-info">
+      <text>学号：{{userInfo.studentId}}</text>
+      <text>姓名：{{userInfo.name}}</text>
+      <text>班级：{{userInfo.className}}</text>
+    </view>
+  </view>
+
+  <view class="nav-bar">
+    <view class="nav-item active">请假申请</view>
+    <view class="nav-item" bindtap="goToRecords">请假记录</view>
+  </view>
+
+  <view class="form-container">
+    <view class="form-item">
+      <text class="label">请假类型</text>
+      <picker bindchange="bindTypeChange" value="{{index}}" range="{{leaveTypes}}">
+        <view class="picker">{{selectedType}}</view>
+      </picker>
+    </view>
+
+    <view class="form-group">
+      <view class="form-item">
+        <text class="label">开始日期</text>
+        <picker mode="date" value="{{startDate}}" start="2024-01-01" bindchange="bindStartDateChange">
+          <view class="picker">{{startDate || '请选择'}}</view>
+        </picker>
+      </view>
+      <view class="form-item">
+        <text class="label">开始时间</text>
+        <picker mode="time" value="{{startTime}}" bindchange="bindStartTimeChange">
+          <view class="picker">{{startTime || '请选择'}}</view>
+        </picker>
+      </view>
+    </view>
+
+    <view class="form-group">
+      <view class="form-item">
+        <text class="label">结束日期</text>
+        <picker mode="date" value="{{endDate}}" start="{{startDate}}" bindchange="bindEndDateChange">
+          <view class="picker">{{endDate || '请选择'}}</view>
+        </picker>
+      </view>
+      <view class="form-item">
+        <text class="label">结束时间</text>
+        <picker mode="time" value="{{endTime}}" bindchange="bindEndTimeChange">
+          <view class="picker">{{endTime || '请选择'}}</view>
+        </picker>
+      </view>
+    </view>
+
+    <view class="form-item">
+      <text class="label">请假天数</text>
+      <view class="days-display">{{days}}天</view>
+    </view>
+
+    <view class="form-item">
+      <text class="label">审批教师</text>
+      <view class="teacher-info">
+        <text>{{teacherInfo.name}}（{{teacherInfo.title}}）</text>
+      </view>
+    </view>
+
+    <view class="form-item">
+      <text class="label">请假理由</text>
+      <textarea class="reason-input" placeholder="请输入请假理由（必填）" value="{{reason}}" bindinput="inputReason"></textarea>
+    </view>
+
+    <view class="form-item submit-section">
+      <button class="submit-btn" type="primary" bindtap="submitLeave">提交申请</button>
+    </view>
+  </view>
+</view> 

@@ -1,0 +1,51 @@
+<view class="container">
+  <view class="header">
+    <text class="title">请假数据统计</text>
+  </view>
+
+  <view class="stats-cards">
+    <view class="stat-card">
+      <text class="stat-value">{{totalApplications}}</text>
+      <text class="stat-label">总申请数</text>
+    </view>
+    <view class="stat-card pending">
+      <text class="stat-value">{{pendingApplications}}</text>
+      <text class="stat-label">待审批</text>
+    </view>
+    <view class="stat-card approved">
+      <text class="stat-value">{{approvedApplications}}</text>
+      <text class="stat-label">已通过</text>
+    </view>
+    <view class="stat-card rejected">
+      <text class="stat-value">{{rejectedApplications}}</text>
+      <text class="stat-label">已拒绝</text>
+    </view>
+  </view>
+
+  <view class="section">
+    <text class="section-title">最近一周统计</text>
+    <view class="weekly-stats">
+      <block wx:if="{{weeklyStats.length > 0}}">
+        <view class="stats-table">
+          <view class="table-header">
+            <view class="header-cell">日期</view>
+            <view class="header-cell">总数</view>
+            <view class="header-cell">待审批</view>
+            <view class="header-cell">已通过</view>
+            <view class="header-cell">已拒绝</view>
+          </view>
+          <view class="table-row" wx:for="{{weeklyStats}}" wx:key="date">
+            <view class="table-cell">{{item.date}}</view>
+            <view class="table-cell">{{item.total}}</view>
+            <view class="table-cell">{{item.pending}}</view>
+            <view class="table-cell">{{item.approved}}</view>
+            <view class="table-cell">{{item.rejected}}</view>
+          </view>
+        </view>
+      </block>
+      <view class="empty-state" wx:else>
+        <text>暂无数据</text>
+      </view>
+    </view>
+  </view>
+</view> 

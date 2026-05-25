@@ -1,0 +1,60 @@
+<view class="container">
+  <view class="header">
+    <text class="title">数据库初始化</text>
+    <text class="subtitle">此操作将重新创建所有基础数据</text>
+  </view>
+
+  <view class="warning">
+    <text class="warning-title">警告</text>
+    <text class="warning-text">初始化操作会创建新的数据记录。如果数据库中已有数据，建议先备份或清空数据库。</text>
+  </view>
+
+  <button class="init-btn {{isInitializing ? 'loading' : ''}}" 
+          bindtap="initDatabase" 
+          disabled="{{isInitializing}}">
+    {{isInitializing ? '初始化中...' : '开始初始化'}}
+  </button>
+
+  <view class="log-container">
+    <text class="log-title">操作日志</text>
+    <scroll-view class="log-content" scroll-y="true">
+      <block wx:if="{{logs.length > 0}}">
+        <view class="log-item" wx:for="{{logs}}" wx:key="*this">
+          {{item}}
+        </view>
+      </block>
+      <view class="empty-log" wx:else>
+        暂无日志
+      </view>
+    </scroll-view>
+  </view>
+
+  <view class="info-container">
+    <text class="info-title">初始账号信息</text>
+    <view class="info-section">
+      <text class="section-title">教师账号：</text>
+      <view class="account-item">
+        <text>班主任：1019830619017（密码：123456）</text>
+      </view>
+      <view class="account-item">
+        <text>系书记：1019830619018（密码：123456）</text>
+      </view>
+      <view class="account-item">
+        <text>系主任：1019830619019（密码：123456）</text>
+      </view>
+    </view>
+    
+    <view class="info-section">
+      <text class="section-title">学生账号：</text>
+      <view class="account-item">
+        <text>张三：202101001（密码：123456）</text>
+      </view>
+      <view class="account-item">
+        <text>李四：202101002（密码：123456）</text>
+      </view>
+      <view class="account-item">
+        <text>王五：202101003（密码：123456）</text>
+      </view>
+    </view>
+  </view>
+</view> 

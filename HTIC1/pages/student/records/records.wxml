@@ -1,0 +1,53 @@
+<view class="container">
+  <view class="header">
+    <view class="user-info">
+      <text>学号：{{userInfo.studentId}}</text>
+      <text>姓名：{{userInfo.name}}</text>
+      <text>班级：{{userInfo.className}}</text>
+    </view>
+  </view>
+
+  <view class="records-list">
+    <block wx:if="{{leaveRecords.length > 0}}">
+      <view class="record-card" wx:for="{{leaveRecords}}" wx:key="_id">
+        <view class="card-header">
+          <view class="leave-type {{item.type === '病假' ? 'sick' : item.type === '事假' ? 'personal' : 'other'}}">
+            {{item.type}}
+          </view>
+          <view class="status-tag {{item.status === 'pending' ? 'pending' : item.status === 'approved' ? 'approved' : 'rejected'}}">
+            {{item.status === 'pending' ? '待审批' : item.status === 'approved' ? '已通过' : '已拒绝'}}
+          </view>
+        </view>
+
+        <view class="card-content">
+          <view class="info-grid">
+            <view class="info-item">
+              <text class="info-label">请假天数</text>
+              <text class="info-value">{{item.days}}天</text>
+            </view>
+            <view class="info-item">
+              <text class="info-label">审批教师</text>
+              <text class="info-value">{{item.teacherName}}</text>
+            </view>
+          </view>
+          
+          <view class="reason-section">
+            <text class="reason-label">请假理由</text>
+            <text class="reason-content">{{item.reason}}</text>
+          </view>
+        </view>
+
+        <view class="card-actions">
+          <button class="action-btn" bindtap="viewDetail" data-id="{{item._id}}">
+            <text class="btn-icon">↗</text>
+            <text>查看详情</text>
+          </button>
+        </view>
+      </view>
+    </block>
+    <view class="empty-state" wx:else>
+      <image class="empty-icon" src="/images/empty-box.png"></image>
+      <text class="empty-text">暂无请假记录</text>
+    </view>
+  </view>
+</view> 

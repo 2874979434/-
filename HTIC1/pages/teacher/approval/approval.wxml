@@ -1,0 +1,139 @@
+<view class="page-container">
+  <!-- 顶部信息卡片 -->
+  <view class="header-card">
+    <view class="avatar-section">
+      <view class="avatar">{{userInfo.name[0]}}</view>
+      <view class="user-info">
+        <text class="name">{{userInfo.name}}</text>
+        <text class="title">{{userInfo.title}}</text>
+      </view>
+    </view>
+    <view class="stats-section">
+      <view class="stat-item">
+        <text class="stat-num">{{pendingApplications.length}}</text>
+        <text class="stat-label">待审批</text>
+      </view>
+      <view class="stat-item">
+        <text class="stat-num">{{approvedApplications.length}}</text>
+        <text class="stat-label">已处理</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 标签页切换 -->
+  <view class="tabs-container">
+    <view class="tabs">
+      <view class="tab {{activeTab === 0 ? 'active' : ''}}" bindtap="switchTab" data-index="0">
+        <text>待审批</text>
+        <view class="tab-line"></view>
+      </view>
+      <view class="tab {{activeTab === 1 ? 'active' : ''}}" bindtap="switchTab" data-index="1">
+        <text>已审批</text>
+        <view class="tab-line"></view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 待审批列表 -->
+  <view class="applications-list {{activeTab === 0 ? 'active' : ''}}" hidden="{{activeTab !== 0}}">
+    <block wx:if="{{pendingApplications.length > 0}}">
+      <view class="application-card" wx:for="{{pendingApplications}}" wx:key="id">
+        <view class="card-header">
+          <view class="student-info">
+            <text class="student-name">{{item.studentName}}</text>
+            <text class="student-class">{{item.studentClass}}</text>
+          </view>
+          <view class="leave-type {{item.type === '病假' ? 'sick' : item.type === '事假' ? 'personal' : 'other'}}">
+            {{item.type}}
+          </view>
+        </view>
+
+        <view class="card-content">
+          <view class="info-grid">
+            <view class="info-item">
+              <text class="info-label">请假天数</text>
+              <text class="info-value">{{item.days}}天</text>
+            </view>
+            <view class="info-item">
+              <text class="info-label">开始日期</text>
+              <text class="info-value">{{item.startDate}}</text>
+            </view>
+            <view class="info-item">
+              <text class="info-label">结束日期</text>
+              <text class="info-value">{{item.endDate}}</text>
+            </view>
+          </view>
+          
+          <view class="reason-section">
+            <text class="reason-label">请假原因</text>
+            <text class="reason-content">{{item.reason}}</text>
+          </view>
+        </view>
+
+        <view class="card-actions">
+          <button class="action-btn approve" bindtap="handleApplication" data-application-id="{{item.id}}" data-action="approved">
+            <text class="btn-icon">✓</text>
+            <text>通过</text>
+          </button>
+          <button class="action-btn reject" bindtap="handleApplication" data-application-id="{{item.id}}" data-action="rejected">
+            <text class="btn-icon">✕</text>
+            <text>拒绝</text>
+          </button>
+          <button class="action-btn detail" bindtap="viewDetail" data-id="{{item.id}}">
+            <text class="btn-icon">↗</text>
+            <text>详情</text>
+          </button>
+        </view>
+      </view>
+    </block>
+    <view class="empty-state" wx:else>
+      <image class="empty-icon" src="/images/empty-box.png"></image>
+      <text class="empty-text">暂无待审批的请假申请</text>
+    </view>
+  </view>
+
+  <!-- 已审批列表 -->
+  <view class="applications-list {{activeTab === 1 ? 'active' : ''}}" hidden="{{activeTab !== 1}}">
+    <block wx:if="{{approvedApplications.length > 0}}">
+      <view class="application-card" wx:for="{{approvedApplications}}" wx:key="id">
+        <view class="card-header">
+          <view class="student-info">
+            <text class="student-name">{{item.studentName}}</text>
+            <text class="student-class">{{item.studentClass}}</text>
+          </view>
+          <view class="status-tag {{item.approvalFlow[item.currentApprovalIndex].status === 'approved' ? 'approved' : 'rejected'}}">
+            {{item.approvalFlow[item.currentApprovalIndex].status === 'approved' ? '已通过' : '已拒绝'}}
+          </view>
+        </view>
+
+        <view class="card-content">
+          <view class="info-grid">
+            <view class="info-item">
+              <text class="info-label">请假类型</text>
+              <text class="info-value">{{item.type}}</text>
+            </view>
+            <view class="info-item">
+              <text class="info-label">请假天数</text>
+              <text class="info-value">{{item.days}}天</text>
+            </view>
+            <view class="info-item">
+              <text class="info-label">审批时间</text>
+              <text class="info-value">{{item.approvalFlow[item.currentApprovalIndex].approvalTime || '-'}}</text>
+            </view>
+          </view>
+        </view>
+
+        <view class="card-actions single">
+          <button class="action-btn detail" bindtap="viewDetail" data-id="{{item.id}}">
+            <text class="btn-icon">↗</text>
+            <text>查看详情</text>
+          </button>
+        </view>
+      </view>
+    </block>
+    <view class="empty-state" wx:else>
+      <image class="empty-icon" src="/images/empty-box.png"></image>
+      <text class="empty-text">暂无已审批的请假记录</text>
+    </view>
+  </view>
+</view> 
